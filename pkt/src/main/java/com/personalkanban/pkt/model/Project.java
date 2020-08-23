@@ -1,10 +1,14 @@
 package com.personalkanban.pkt.model;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+=======
+import javax.persistence.*;
+>>>>>>> 8a67f3de392f39a9a038bad1ef9ea0f4cf597c18
 import java.util.Date;
 
 @Entity
@@ -12,6 +16,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+<<<<<<< HEAD
     @NotBlank(message = "Project name is required")
     private String projectName;
     @NotBlank(message = "Project Identifier is required")
@@ -28,6 +33,15 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date created_At;
     @JsonFormat(pattern = "yyyy-mm-dd")
+=======
+    private String projectName;
+    private String projectIndentifier;
+    private String description;
+    private Date start_date;
+    private Date end_date;
+
+    private Date created_At;
+>>>>>>> 8a67f3de392f39a9a038bad1ef9ea0f4cf597c18
     private Date updated_At;
 
     public Project() {
