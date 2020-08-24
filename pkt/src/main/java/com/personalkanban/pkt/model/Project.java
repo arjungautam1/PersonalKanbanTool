@@ -17,7 +17,11 @@ public class Project {
     @NotBlank(message = "Project Identifier is required")
     @Size(min = 4, max = 5, message = "Please use 4-5 characters")
     @Column(updatable = false, unique = true)
-    private String projectIndentifier;
+
+//    Since unique=true was not working so i used this query to create unique in mysql table as well.
+//    ALTER TABLE project ADD CONSTRAINT project_identifier UNIQUE(project_identifier)
+
+    private String projectIdentifier;
     @NotBlank(message = "Project description is required")
     private String description;
     @JsonFormat(pattern = "yyyy-mm-dd")
@@ -49,12 +53,12 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public String getProjectIndentifier() {
-        return projectIndentifier;
+    public String getProjectIdentifier() {
+        return projectIdentifier;
     }
 
-    public void setProjectIndentifier(String projectIndentifier) {
-        this.projectIndentifier = projectIndentifier;
+    public void setProjectIdentifier(String projectIdentifier) {
+        this.projectIdentifier = projectIdentifier;
     }
 
     public String getDescription() {
