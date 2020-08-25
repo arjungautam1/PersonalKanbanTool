@@ -28,29 +28,31 @@ public class ProjectController {
     @PostMapping("")
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result) {
 
-        ResponseEntity<?> errorMap=mapValidationErrorService.MapValidationService(result);
-        if(errorMap!=null) return errorMap;
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if (errorMap != null) return errorMap;
 
         Project project1 = projectService.saveOrUpdateProject(project);
         return new ResponseEntity<Project>(project, HttpStatus.CREATED);
 
     }
+
     @GetMapping("/{projectId}")
-    public ResponseEntity<?> getProjectById(@PathVariable String projectId)
-    {
-        Project project=projectService.findProjectByIdentifier(projectId.toUpperCase());
-        return new ResponseEntity<Project>(project,HttpStatus.OK);
+    public ResponseEntity<?> getProjectById(@PathVariable String projectId) {
+        Project project = projectService.findProjectByIdentifier(projectId.toUpperCase());
+        return new ResponseEntity<Project>(project, HttpStatus.OK);
     }
+
     @GetMapping("/all")
-    public Iterable<Project> getAllProjects(){
+    public Iterable<Project> getAllProjects() {
         return projectService.findAllProjects();
     }
-    @DeleteMapping("/{projectId}")
-    public ResponseEntity<?> deleteProjectById(@PathVariable String projectId){
-        projectService.deleteProjectByIdentifier(projectId);
-        return new ResponseEntity<String>("Project with ID:'"+projectId+"'was deleted",HttpStatus.OK);
 
+    @DeleteMapping("/{projectId}")
+    public ResponseEntity<?> deleteProjectById(@PathVariable String projectId) {
+        projectService.deleteProjectByIdentifier(projectId);
+        return new ResponseEntity<String>("Project with ID:'" + projectId + "'was deleted", HttpStatus.OK);
 
     }
+    //For put method we can just put id and update using Put
 
 }
